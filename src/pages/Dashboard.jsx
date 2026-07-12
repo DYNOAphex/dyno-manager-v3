@@ -46,81 +46,85 @@ const Dashboard = () => {
   ];
 
   return (
-    <div style={{ paddingBottom: '100px', paddingTop: '20px' }}>
-      <Header user={user} />
+    <>
+      <div style={{ paddingBottom: '100px', paddingTop: '20px' }}>
+        <Header user={user} />
 
-      <div style={{ paddingBottom: '100px', paddingTop: '20px', background: '#0A0A0A' }}>
-<div className="section-title">Prochain scrim</div>
-          <MatchCard match={nextMatch} onView={() => {}} />
-        </div>
-
-        {/* Statistiques */}
-        <div style={{ marginBottom: '32px' }}>
-          <div className="section-title">Statistiques</div>
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(2, 1fr)', 
-            gap: '12px' 
-          }}>
-            {stats.map((stat, index) => {
-              const Icon = stat.icon;
-              return (
-                <div key={index} className="stat-card">
-                  <Icon size={22} color="#D4AF37" style={{ marginBottom: '8px' }} />
-                  <div style={{ fontSize: '26px', fontWeight: 800 }}>{stat.value}</div>
-                  <div style={{ fontSize: '13px', color: 'var(--grey)' }}>{stat.label}</div>
-                </div>
-              );
-            })}
+        <div style={{ padding: '0 20px' }}>
+          {/* Prochain Scrim */}
+          <div style={{ marginBottom: '32px' }}>
+            <div className="section-title">Prochain scrim</div>
+            <MatchCard match={nextMatch} onView={() => {}} />
           </div>
-        </div>
 
-        {/* Joueurs connectés */}
-        <div style={{ marginBottom: '32px' }}>
-          <div className="section-title">Derniers joueurs connectés</div>
-          <div className="glass-card" style={{ padding: '16px' }}>
-            {playersOnline.map((player, index) => (
-              <div key={index} style={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                gap: '14px',
-                padding: '10px 0',
-                borderBottom: index !== playersOnline.length - 1 ? '1px solid #252525' : 'none'
-              }}>
-                <img 
-                  src={`https://i.pravatar.cc/36?u=${player.pseudo}`} 
-                  alt={player.pseudo}
-                  className="avatar" 
-                  style={{ width: 36, height: 36 }}
-                />
-                <div>
-                  <div style={{ fontWeight: 600 }}>{player.pseudo}</div>
-                  <div style={{ fontSize: '12px', color: 'var(--grey)' }}>{player.status}</div>
+          {/* Statistiques */}
+          <div style={{ marginBottom: '32px' }}>
+            <div className="section-title">Statistiques</div>
+            <div style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(2, 1fr)', 
+              gap: '12px' 
+            }}>
+              {stats.map((stat, index) => {
+                const Icon = stat.icon;
+                return (
+                  <div key={index} className="stat-card">
+                    <Icon size={22} color="#D4AF37" style={{ marginBottom: '8px' }} />
+                    <div style={{ fontSize: '26px', fontWeight: 800 }}>{stat.value}</div>
+                    <div style={{ fontSize: '13px', color: 'var(--grey)' }}>{stat.label}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Joueurs connectés */}
+          <div style={{ marginBottom: '32px' }}>
+            <div className="section-title">Derniers joueurs connectés</div>
+            <div className="glass-card" style={{ padding: '16px' }}>
+              {playersOnline.map((player, index) => (
+                <div key={index} style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '14px',
+                  padding: '10px 0',
+                  borderBottom: index !== playersOnline.length - 1 ? '1px solid #252525' : 'none'
+                }}>
+                  <img 
+                    src={`https://i.pravatar.cc/36?u=${player.pseudo}`} 
+                    alt={player.pseudo}
+                    className="avatar" 
+                    style={{ width: 36, height: 36 }}
+                  />
+                  <div>
+                    <div style={{ fontWeight: 600 }}>{player.pseudo}</div>
+                    <div style={{ fontSize: '12px', color: 'var(--grey)' }}>{player.status}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Annonces */}
+          <div>
+            <div className="section-title">Annonces récentes</div>
+            {announcements.map((ann, index) => (
+              <div key={index} className="glass-card" style={{ padding: '20px', marginBottom: '12px' }}>
+                <div style={{ fontWeight: 700, fontSize: '16px' }}>{ann.title}</div>
+                <div style={{ color: 'var(--grey)', fontSize: '13px', marginTop: '4px' }}>
+                  {ann.author} • {ann.date}
+                </div>
+                <div style={{ marginTop: '12px', lineHeight: 1.5, color: '#ccc' }}>
+                  {ann.description}
                 </div>
               </div>
             ))}
           </div>
         </div>
-
-        {/* Annonces */}
-        <div>
-          <div className="section-title">Annonces récentes</div>
-          {announcements.map((ann, index) => (
-            <div key={index} className="glass-card" style={{ padding: '20px', marginBottom: '12px' }}>
-              <div style={{ fontWeight: 700, fontSize: '16px' }}>{ann.title}</div>
-              <div style={{ color: 'var(--grey)', fontSize: '13px', marginTop: '4px' }}>
-                {ann.author} • {ann.date}
-              </div>
-              <div style={{ marginTop: '12px', lineHeight: 1.5, color: '#ccc' }}>
-                {ann.description}
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
 
       <BottomNav />
-    </div>
+    </>
   );
 };
 
