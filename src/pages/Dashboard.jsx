@@ -109,17 +109,41 @@ const Dashboard = () => {
           <div>
             <div className="section-title">Annonces récentes</div>
             {announcements.map((ann, index) => (
-              <div key={index} className="glass-card" style={{ padding: '20px', marginBottom: '12px' }}>
-                <div style={{ fontWeight: 700, fontSize: '16px' }}>{ann.title}</div>
-                <div style={{ color: 'var(--grey)', fontSize: '13px', marginTop: '4px' }}>
-                  {ann.author} • {ann.date}
-                </div>
-                <div style={{ marginTop: '12px', lineHeight: 1.5, color: '#ccc' }}>
-                  {ann.description}
-                </div>
-              </div>
-            ))}
-          </div>
+              <div style={{ 
+  display: 'grid', 
+  gridTemplateColumns: 'repeat(2, 1fr)', 
+  gap: '14px' 
+}}>
+  {stats.map((stat, index) => {
+    const Icon = stat.icon;
+    return (
+      <div key={index} className="glass-card" style={{ 
+        padding: '22px 18px',
+        textAlign: 'center',
+        border: '1px solid rgba(212, 175, 55, 0.2)'
+      }}>
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          marginBottom: '12px' 
+        }}>
+          <Icon size={26} color="#D4AF37" />
+        </div>
+        <div style={{ fontSize: '28px', fontWeight: 800, lineHeight: 1 }}>
+          {stat.value}
+        </div>
+        <div style={{ 
+          fontSize: '13px', 
+          color: 'var(--grey)', 
+          marginTop: '4px',
+          fontWeight: 500
+        }}>
+          {stat.label}
+        </div>
+      </div>
+    );
+  })}
+</div>
         </div>
       </div>
 
