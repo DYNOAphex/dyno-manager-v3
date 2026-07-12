@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Home, Calendar, Users, User } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -30,17 +31,17 @@ const BottomNav = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                gap: '4px',
+                gap: '5px',
                 background: 'none',
                 border: 'none',
                 color: active ? 'var(--gold)' : 'var(--grey)',
                 fontSize: '11px',
-                fontWeight: active ? 600 : 500,
+                fontWeight: active ? 700 : 500,
                 padding: '8px 12px',
                 cursor: 'pointer'
               }}
             >
-              <Icon size={22} />
+              <Icon size={23} strokeWidth={active ? 2.5 : 2} />
               <span>{item.label}</span>
             </button>
           );
@@ -50,8 +51,13 @@ const BottomNav = () => {
         <button 
           onClick={() => navigate('/create-scrim')}
           className="fab"
+          style={{
+            width: '58px',
+            height: '58px',
+            boxShadow: '0 6px 24px rgba(212, 175, 55, 0.5)'
+          }}
         >
-          <span style={{ fontSize: '28px', lineHeight: 0 }}>+</span>
+          <span style={{ fontSize: '30px', lineHeight: 0, fontWeight: 300 }}>+</span>
         </button>
       </div>
     </nav>
