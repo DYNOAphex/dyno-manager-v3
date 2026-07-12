@@ -1,0 +1,51 @@
+import React from 'react';
+import BottomNav from '../components/BottomNav';
+
+const Roster = () => {
+  const players = [
+      { id: 1, pseudo: "Zephyr", role: "Mid", status: "Actif", avatar: "https://i.pravatar.cc/48?u=zephyr" },
+          { id: 2, pseudo: "Karma", role: "Support", status: "Actif", avatar: "https://i.pravatar.cc/48?u=karma" },
+              { id: 3, pseudo: "Shadow", role: "ADC", status: "Blessé", avatar: "https://i.pravatar.cc/48?u=shadow" },
+                  { id: 4, pseudo: "Blaze", role: "Jungle", status: "Actif", avatar: "https://i.pravatar.cc/48?u=blaze" },
+                      { id: 5, pseudo: "Vortex", role: "Top", status: "Actif", avatar: "https://i.pravatar.cc/48?u=vortex" },
+                        ];
+
+                          return (
+                              <div style={{ paddingBottom: '90px' }}>
+                                    <div style={{ padding: '24px 20px' }}>
+                                            <div className="section-title">Roster • 5 joueurs</div>
+
+                                                    <div className="glass-card" style={{ padding: '8px 0' }}>
+                                                              {players.map((player, index) => (
+                                                                          <div key={player.id} style={{
+                                                                                        display: 'flex',
+                                                                                                      alignItems: 'center',
+                                                                                                                    gap: '16px',
+                                                                                                                                  padding: '16px 20px',
+                                                                                                                                                borderBottom: index !== players.length - 1 ? '1px solid #252525' : 'none'
+                                                                                                                                                            }}>
+                                                                                                                                                                          <img src={player.avatar} alt={player.pseudo} className="avatar" style={{ width: 48, height: 48 }} />
+                                                                                                                                                                                        <div style={{ flex: 1 }}>
+                                                                                                                                                                                                        <div style={{ fontWeight: 700 }}>{player.pseudo}</div>
+                                                                                                                                                                                                                        <div style={{ color: 'var(--grey)', fontSize: '14px' }}>{player.role}</div>
+                                                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                                                                    <div style={{
+                                                                                                                                                                                                                                                                    fontSize: '13px',
+                                                                                                                                                                                                                                                                                    padding: '4px 12px',
+                                                                                                                                                                                                                                                                                                    borderRadius: '9999px',
+                                                                                                                                                                                                                                                                                                                    background: player.status === 'Actif' ? 'rgba(212,175,55,0.15)' : '#3a2a2a',
+                                                                                                                                                                                                                                                                                                                                    color: player.status === 'Actif' ? 'var(--gold)' : '#ff6b6b'
+                                                                                                                                                                                                                                                                                                                                                  }}>
+                                                                                                                                                                                                                                                                                                                                                                  {player.status}
+                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                                                                                                      ))}
+                                                                                                                                                                                                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                          <BottomNav />
+                                                                                                                                                                                                                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                );
+                                                                                                                                                                                                                                                                                                                                                                                                                                };
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                export default Roster;

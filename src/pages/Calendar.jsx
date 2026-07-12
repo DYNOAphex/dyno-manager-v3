@@ -1,0 +1,49 @@
+import React from 'react';
+import BottomNav from '../components/BottomNav';
+import { Calendar as CalendarIcon } from 'lucide-react';
+
+const Calendar = () => {
+  const upcomingMatches = [
+      { id: 1, date: "12 Juil", time: "20:30", opponent: "Team Phoenix", type: "Scrim" },
+          { id: 2, date: "15 Juil", time: "19:00", opponent: "Lunar Esports", type: "Tournoi" },
+              { id: 3, date: "18 Juil", time: "21:00", opponent: "Vortex", type: "Scrim" },
+                ];
+
+                  return (
+                      <div style={{ paddingBottom: '90px' }}>
+                            <div style={{ padding: '24px 20px' }}>
+                                    <div className="section-title" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                              <CalendarIcon size={26} /> Calendrier
+                                                      </div>
+
+                                                              <div style={{ marginTop: '24px' }}>
+                                                                        {upcomingMatches.map((match) => (
+                                                                                    <div key={match.id} className="glass-card" style={{ padding: '20px', marginBottom: '14px' }}>
+                                                                                                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                                                                                                  <div>
+                                                                                                                                    <div style={{ fontSize: '15px', color: 'var(--grey)' }}>{match.date} • {match.time}</div>
+                                                                                                                                                      <div style={{ fontSize: '20px', fontWeight: 700, marginTop: '6px' }}>{match.opponent}</div>
+                                                                                                                                                                      </div>
+                                                                                                                                                                                      <div style={{ 
+                                                                                                                                                                                                        background: match.type === 'Scrim' ? 'var(--gold)' : '#3a3a3a', 
+                                                                                                                                                                                                                          color: match.type === 'Scrim' ? '#090909' : '#fff',
+                                                                                                                                                                                                                                            padding: '4px 14px', 
+                                                                                                                                                                                                                                                              borderRadius: '9999px', 
+                                                                                                                                                                                                                                                                                fontSize: '13px', 
+                                                                                                                                                                                                                                                                                                  height: 'fit-content',
+                                                                                                                                                                                                                                                                                                                    alignSelf: 'center'
+                                                                                                                                                                                                                                                                                                                                    }}>
+                                                                                                                                                                                                                                                                                                                                                      {match.type}
+                                                                                                                                                                                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                          ))}
+                                                                                                                                                                                                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                              <BottomNav />
+                                                                                                                                                                                                                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                    );
+                                                                                                                                                                                                                                                                                                                                                                                                                                    };
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                    export default Calendar;
