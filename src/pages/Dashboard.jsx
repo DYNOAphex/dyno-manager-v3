@@ -50,8 +50,7 @@ const Dashboard = () => {
       <Header user={user} />
 
       <div style={{ paddingBottom: '100px', paddingTop: '20px', background: '#0A0A0A' }}>
-
-          <div className="section-title">Prochain scrim</div>
+<div className="section-title">Prochain scrim</div>
           <MatchCard match={nextMatch} onView={() => {}} />
         </div>
 
