@@ -6,11 +6,11 @@ const MatchCard = ({ match, onView }) => {
   if (!match) {
     return (
       <div className="glass-card" style={{ 
-        padding: '32px', 
+        padding: '36px', 
         textAlign: 'center',
-        border: '1px solid rgba(212, 175, 55, 0.2)'
+        border: '1px solid rgba(212, 175, 55, 0.25)'
       }}>
-        <div style={{ fontSize: '18px', fontWeight: 600, marginBottom: '8px' }}>
+        <div style={{ fontSize: '19px', fontWeight: 700, marginBottom: '8px' }}>
           Aucun scrim prévu
         </div>
         <div style={{ color: 'var(--grey)' }}>Créez votre prochain match</div>
@@ -23,59 +23,78 @@ const MatchCard = ({ match, onView }) => {
       whileHover={{ scale: 1.01 }}
       className="glass-card" 
       style={{ 
-        padding: '24px',
-        border: '1px solid rgba(212, 175, 55, 0.25)',
-        position: 'relative',
-        overflow: 'hidden'
+        padding: '26px 24px',
+        border: '1px solid rgba(212, 175, 55, 0.3)',
+        position: 'relative'
       }}
     >
-      {/* Badge Type */}
-      <div style={{ 
+      {/* Badge */}
+      <div style={{
         position: 'absolute',
-        top: '20px',
-        right: '20px',
+        top: '22px',
+        right: '22px',
         background: 'var(--gold)',
         color: '#0A0A0A',
         fontSize: '12px',
-        fontWeight: 700,
-        padding: '4px 14px',
+        fontWeight: 800,
+        padding: '5px 16px',
         borderRadius: '9999px'
       }}>
         {match.type}
       </div>
 
-      <div style={{ marginBottom: '16px' }}>
-        <div style={{ fontSize: '13px', color: 'var(--grey)', marginBottom: '4px' }}>
+      <div style={{ marginBottom: '20px' }}>
+        <div style={{ 
+          fontSize: '13px', 
+          color: 'var(--grey)', 
+          marginBottom: '6px',
+          letterSpacing: '0.5px'
+        }}>
           PROCHAIN SCRIM
         </div>
-        <div style={{ fontSize: '26px', fontWeight: 800, lineHeight: 1.1 }}>
+        <div style={{ 
+          fontSize: '28px', 
+          fontWeight: 800, 
+          lineHeight: 1.1 
+        }}>
           {match.adversaire}
         </div>
-        <div style={{ color: 'var(--grey)', marginTop: '4px' }}>
+        <div style={{ 
+          color: 'var(--grey)', 
+          marginTop: '6px',
+          fontSize: '15px'
+        }}>
           {match.arene}
         </div>
       </div>
 
       <div style={{ 
         display: 'flex', 
-        gap: '24px', 
-        marginBottom: '24px',
+        gap: '28px', 
+        marginBottom: '28px',
         color: 'var(--grey)'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Clock size={18} />
-          <span style={{ fontWeight: 600, color: 'var(--white)' }}>{match.heure}</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '9px' }}>
+          <Clock size={19} />
+          <span style={{ fontWeight: 700, color: 'var(--white)', fontSize: '15px' }}>
+            {match.heure}
+          </span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <MapPin size={18} />
-          <span>{match.date}</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '9px' }}>
+          <MapPin size={19} />
+          <span style={{ fontSize: '15px' }}>{match.date}</span>
         </div>
       </div>
 
       <button 
         onClick={() => onView(match)}
         className="btn btn-primary" 
-        style={{ width: '100%', padding: '16px', fontSize: '16px' }}
+        style={{ 
+          width: '100%', 
+          padding: '17px', 
+          fontSize: '16px',
+          fontWeight: 700
+        }}
       >
         Voir les détails
       </button>
