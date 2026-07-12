@@ -49,9 +49,8 @@ const Dashboard = () => {
     <div style={{ paddingBottom: '100px', paddingTop: '20px' }}>
       <Header user={user} />
 
-      <div style={{ padding: '0 20px' }}>
-        {/* Prochain Scrim */}
-        <div style={{ marginBottom: '32px' }}>
+      <div style={{ paddingBottom: '100px', paddingTop: '20px', background: '#0A0A0A' }}>
+
           <div className="section-title">Prochain scrim</div>
           <MatchCard match={nextMatch} onView={() => {}} />
         </div>
