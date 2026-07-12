@@ -63,15 +63,34 @@ const Dashboard = () => {
             <div style={{ 
               display: 'grid', 
               gridTemplateColumns: 'repeat(2, 1fr)', 
-              gap: '12px' 
+              gap: '14px' 
             }}>
               {stats.map((stat, index) => {
                 const Icon = stat.icon;
                 return (
-                  <div key={index} className="stat-card">
-                    <Icon size={22} color="#D4AF37" style={{ marginBottom: '8px' }} />
-                    <div style={{ fontSize: '26px', fontWeight: 800 }}>{stat.value}</div>
-                    <div style={{ fontSize: '13px', color: 'var(--grey)' }}>{stat.label}</div>
+                  <div key={index} className="glass-card" style={{ 
+                    padding: '22px 18px',
+                    textAlign: 'center',
+                    border: '1px solid rgba(212, 175, 55, 0.2)'
+                  }}>
+                    <div style={{ 
+                      display: 'flex', 
+                      justifyContent: 'center', 
+                      marginBottom: '12px' 
+                    }}>
+                      <Icon size={26} color="#D4AF37" />
+                    </div>
+                    <div style={{ fontSize: '28px', fontWeight: 800, lineHeight: 1 }}>
+                      {stat.value}
+                    </div>
+                    <div style={{ 
+                      fontSize: '13px', 
+                      color: 'var(--grey)', 
+                      marginTop: '4px',
+                      fontWeight: 500
+                    }}>
+                      {stat.label}
+                    </div>
                   </div>
                 );
               })}
@@ -81,24 +100,36 @@ const Dashboard = () => {
           {/* Joueurs connectés */}
           <div style={{ marginBottom: '32px' }}>
             <div className="section-title">Derniers joueurs connectés</div>
-            <div className="glass-card" style={{ padding: '16px' }}>
+            <div className="glass-card" style={{ padding: '8px 0' }}>
               {playersOnline.map((player, index) => (
                 <div key={index} style={{ 
                   display: 'flex', 
                   alignItems: 'center', 
-                  gap: '14px',
-                  padding: '10px 0',
+                  gap: '16px',
+                  padding: '14px 20px',
                   borderBottom: index !== playersOnline.length - 1 ? '1px solid #252525' : 'none'
                 }}>
-                  <img 
-                    src={`https://i.pravatar.cc/36?u=${player.pseudo}`} 
-                    alt={player.pseudo}
-                    className="avatar" 
-                    style={{ width: 36, height: 36 }}
-                  />
-                  <div>
-                    <div style={{ fontWeight: 600 }}>{player.pseudo}</div>
-                    <div style={{ fontSize: '12px', color: 'var(--grey)' }}>{player.status}</div>
+                  <div style={{ position: 'relative' }}>
+                    <img 
+                      src={`https://i.pravatar.cc/42?u=${player.pseudo}`} 
+                      alt={player.pseudo}
+                      className="avatar" 
+                      style={{ width: 42, height: 42 }}
+                    />
+                    <div style={{
+                      position: 'absolute',
+                      bottom: '2px',
+                      right: '2px',
+                      width: 13,
+                      height: 13,
+                      background: '#22c55e',
+                      borderRadius: '9999px',
+                      border: '2px solid #141414'
+                    }} />
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontWeight: 700, fontSize: '16px' }}>{player.pseudo}</div>
+                    <div style={{ fontSize: '13px', color: 'var(--grey)' }}>{player.status}</div>
                   </div>
                 </div>
               ))}
@@ -109,41 +140,17 @@ const Dashboard = () => {
           <div>
             <div className="section-title">Annonces récentes</div>
             {announcements.map((ann, index) => (
-              <div style={{ 
-  display: 'grid', 
-  gridTemplateColumns: 'repeat(2, 1fr)', 
-  gap: '14px' 
-}}>
-  {stats.map((stat, index) => {
-    const Icon = stat.icon;
-    return (
-      <div key={index} className="glass-card" style={{ 
-        padding: '22px 18px',
-        textAlign: 'center',
-        border: '1px solid rgba(212, 175, 55, 0.2)'
-      }}>
-        <div style={{ 
-          display: 'flex', 
-          justifyContent: 'center', 
-          marginBottom: '12px' 
-        }}>
-          <Icon size={26} color="#D4AF37" />
-        </div>
-        <div style={{ fontSize: '28px', fontWeight: 800, lineHeight: 1 }}>
-          {stat.value}
-        </div>
-        <div style={{ 
-          fontSize: '13px', 
-          color: 'var(--grey)', 
-          marginTop: '4px',
-          fontWeight: 500
-        }}>
-          {stat.label}
-        </div>
-      </div>
-    );
-  })}
-</div>
+              <div key={index} className="glass-card" style={{ padding: '20px', marginBottom: '12px' }}>
+                <div style={{ fontWeight: 700, fontSize: '16px' }}>{ann.title}</div>
+                <div style={{ color: 'var(--grey)', fontSize: '13px', marginTop: '4px' }}>
+                  {ann.author} • {ann.date}
+                </div>
+                <div style={{ marginTop: '12px', lineHeight: 1.5, color: '#ccc' }}>
+                  {ann.description}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
